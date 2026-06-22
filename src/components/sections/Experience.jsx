@@ -4,31 +4,31 @@ import TimelineItem from '@/components/shared/TimelineItem';
 
 const experiences = [
   {
-    role: "Senior Machine Learning Engineer",
+    role: "LLM Post Training Intern",
     company: "Ethara AI",
-    date: "2023 — Present",
-    description: "Leading the core ML team building LLM-powered enterprise search. Reduced hallucination rates by 40% using RAG and fine-tuned embedding models.",
-    technologies: ["Python", "PyTorch", "LangChain", "VectorDB"]
+    date: "Apr 2026 — May 2026",
+    description: "Evaluated AI generated responses, assessed accuracy, relevance, safety, and quality, providing detailed feedback to improve large language model performance consistently.",
+    technologies: ["Python", "Data Annotation", "Data Quality Assurance", "Data Labelling"]
   },
   {
-    role: "Data Scientist",
-    company: "Nexus Analytics",
-    date: "2020 — 2023",
-    description: "Developed predictive models for supply chain optimization. Created a demand forecasting tool that reduced inventory waste by $2.4M annually.",
-    technologies: ["Python", "XGBoost", "SQL", "Tableau"]
+    role: "Data Analyst Intern",
+    company: "Fancy Odds",
+    date: "Sep 2021 — Dec 2021",
+    description: "Analyzed website traffic using Python, SQL, and Power BI, developed dashboards, identified trends, generated insights, and supported data-driven decisions.",
+    technologies: ["Python", "SQL", "Power BI"]
   },
-  {
-    role: "Data Analyst",
-    company: "Quantum Logistics",
-    date: "2018 — 2020",
-    description: "Built automated KPI dashboards replacing 15 hours of weekly manual reporting. Conducted A/B testing for routing algorithms.",
-    technologies: ["R", "SQL", "PowerBI", "Python"]
-  }
+  // {
+  //   role: "Data Analyst",
+  //   company: "Quantum Logistics",
+  //   date: "2018 — 2020",
+  //   description: "Built automated KPI dashboards replacing 15 hours of weekly manual reporting. Conducted A/B testing for routing algorithms.",
+  //   technologies: ["R", "SQL", "PowerBI", "Python"]
+  // }
 ];
 
 export default function Experience() {
   const containerRef = useRef(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"]
@@ -39,7 +39,7 @@ export default function Experience() {
   return (
     <section id="experience" className="py-24 bg-bg relative">
       <div className="container mx-auto px-6 max-w-1200">
-        
+
         <div className="mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-text-primary mb-6 flex items-center gap-4">
             <span className="text-accent font-mono text-xl md:text-2xl font-normal">03.</span>
@@ -55,10 +55,10 @@ export default function Experience() {
             <div className="absolute w-[2px] h-full bg-border" />
             {/* Animated drawing line */}
             <svg className="absolute w-2 h-full" preserveAspectRatio="none">
-              <motion.line 
-                x1="4" y1="0" x2="4" y2="100%" 
-                stroke="var(--color-accent)" 
-                strokeWidth="2" 
+              <motion.line
+                x1="4" y1="0" x2="4" y2="100%"
+                stroke="var(--color-accent)"
+                strokeWidth="2"
                 strokeLinecap="round"
                 style={{ pathLength }}
               />

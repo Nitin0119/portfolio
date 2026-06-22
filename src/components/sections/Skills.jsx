@@ -21,12 +21,12 @@ const skillsData = [
   },
   {
     category: 'BI & Visualization',
-    skills: ['Tableau', 'PowerBI', 'Looker', 'Plotly', 'Streamlit'],
+    skills: ['Tableau', 'PowerBI', 'Looker', 'Streamlit'],
     colSpan: 'lg:col-span-2'
   },
   {
     category: 'Tools & Workflows',
-    skills: ['Git', 'MLflow', 'DVC', 'Jira', 'Agile/Scrum'],
+    skills: ['Git', 'MLflow'],
     colSpan: 'lg:col-span-2'
   }
 ];
@@ -38,7 +38,7 @@ export default function Skills() {
   return (
     <section id="skills" className="py-24 bg-bg relative">
       <div className="container mx-auto px-6 max-w-1200">
-        
+
         <div className="mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-text-primary mb-6 flex items-center gap-4">
             <span className="text-accent font-mono text-xl md:text-2xl font-normal">02.</span>
@@ -62,8 +62,8 @@ export default function Skills() {
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {group.skills.map((skill, i) => (
-                    <code 
-                      key={i} 
+                    <code
+                      key={i}
                       className="px-3 py-1.5 text-sm font-mono bg-[#C6FF34]/10 text-accent rounded border border-accent/20"
                     >
                       {skill}

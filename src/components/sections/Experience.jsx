@@ -42,7 +42,7 @@ export default function Experience() {
 
         <div className="mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-text-primary mb-6 flex items-center gap-4">
-            <span className="text-accent font-mono text-xl md:text-2xl font-normal">03.</span>
+            <span className="text-accent font-mono text-xl md:text-2xl font-normal">04.</span>
             Professional Experience
           </h2>
           <div className="w-full h-px bg-border"></div>

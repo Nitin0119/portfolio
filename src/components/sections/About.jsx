@@ -9,26 +9,26 @@ export default function About() {
   return (
     <section id="about" className="py-24 bg-bg relative overflow-hidden" ref={ref}>
       <div className="container mx-auto px-6 max-w-1200">
-        
+
         <div className="mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-text-primary mb-6 flex items-center gap-4">
-            <span className="text-accent font-mono text-xl md:text-2xl font-normal">04.</span>
+            <span className="text-accent font-mono text-xl md:text-2xl font-normal">01.</span>
             About Me
           </h2>
           <div className="w-full h-px bg-border"></div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-16 items-start">
-          
+
           {/* Avatar/Stats Column (Left) */}
-          <motion.div 
+          <motion.div
             className="w-full lg:w-1/3 flex flex-col gap-6"
             variants={slideLeft}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
             {/* Avatar Card */}
-            <motion.div 
+            <motion.div
               whileHover={{ rotate: 3, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="w-full aspect-square bg-surface border border-border rounded-[12px] flex items-center justify-center relative overflow-hidden group cursor-default"
@@ -49,8 +49,8 @@ export default function About() {
             </div>
 
             {/* Resume Download */}
-            <a 
-              href="/resume.pdf" 
+            <a
+              href="/resume.pdf"
               download="Nitin_Yadav_Resume.pdf"
               className="inline-flex justify-center items-center gap-2 w-full py-4 bg-transparent border border-accent text-accent font-mono font-bold rounded-[12px] transition-colors hover:bg-accent hover:text-bg"
             >
@@ -59,7 +59,7 @@ export default function About() {
           </motion.div>
 
           {/* Bio Column (Right) */}
-          <motion.div 
+          <motion.div
             className="w-full lg:w-2/3"
             variants={slideRight}
             initial="hidden"

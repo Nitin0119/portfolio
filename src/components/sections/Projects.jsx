@@ -50,10 +50,10 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 bg-bg relative">
       <div className="container mx-auto px-6 max-w-1200">
-        
+
         <div className="mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-text-primary mb-6 flex items-center gap-4">
-            <span className="text-accent font-mono text-xl md:text-2xl font-normal">01.</span>
+            <span className="text-accent font-mono text-xl md:text-2xl font-normal">03.</span>
             Featured Projects
           </h2>
           <div className="w-full h-px bg-border"></div>
@@ -88,16 +88,16 @@ export default function Projects() {
                 <p className="text-text-secondary text-lg leading-relaxed max-w-3xl">
                   {featuredProject.description}
                 </p>
-                
+
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6 my-4">
                   {featuredProject.metrics.map((metric, i) => (
                     <div key={i} className="flex flex-col">
                       <span className="text-sm text-text-muted uppercase tracking-wider mb-1 font-medium">{metric.label}</span>
-                      <AnimatedCounter 
-                        value={metric.value} 
-                        prefix={metric.prefix} 
-                        suffix={metric.suffix} 
-                        decimals={metric.decimals} 
+                      <AnimatedCounter
+                        value={metric.value}
+                        prefix={metric.prefix}
+                        suffix={metric.suffix}
+                        decimals={metric.decimals}
                       />
                     </div>
                   ))}

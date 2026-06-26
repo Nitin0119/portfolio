@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { fadeUp, customEase } from '@/lib/animations';
 import MagneticButton from '@/components/shared/MagneticButton';
 import TypewriterText from '@/components/shared/TypewriterText';
+import { Terminal, TypingAnimation, AnimatedSpan } from "@/components/ui/terminal";
 
 export default function Hero() {
   const name = "Nitin Yadav";
@@ -30,58 +31,90 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10 max-w-1200">
+      <div className="container mx-auto px-6 relative z-10 max-w-1200 flex flex-col lg:flex-row items-center justify-between gap-16">
+        
+        {/* Left Column: Text Content */}
+        <div className="w-full lg:w-[55%] flex flex-col items-start">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.2 }}
+            className="font-mono text-accent mb-4 text-sm md:text-base flex items-center gap-2"
+          >
+            <span>&gt;</span>
+            <span className="w-2 h-4 bg-accent animate-pulse block"></span>
+          </motion.div>
+
+          <motion.h1 
+            className="text-display font-display font-bold tracking-tighter mb-4 text-text-primary flex flex-wrap"
+            variants={nameContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            {nameChars.map((char, index) => (
+              <motion.span key={index} variants={nameCharVariant}>
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
+          </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.8, ease: customEase }}
+            className="text-lg md:text-xl text-text-secondary max-w-2xl mb-10 leading-relaxed font-sans"
+          >
+            <TypewriterText />
+            <br />
+            Transforming complex datasets into actionable intelligence. Building scalable machine learning systems and driving data-informed decisions for modern enterprises.
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.5, duration: 0.8, ease: customEase }}
+            className="flex flex-wrap items-center gap-4"
+          >
+            <MagneticButton>
+              <a href="#projects" className="inline-block bg-text-primary text-bg px-8 py-3 rounded-[12px] font-medium transition-colors hover:bg-accent hover:text-bg">
+                View Work
+              </a>
+            </MagneticButton>
+            <MagneticButton>
+              <a href="#contact" className="inline-block px-8 py-3 rounded-[12px] font-medium border border-border text-text-primary transition-colors hover:border-accent hover:text-accent">
+                Let's Talk
+              </a>
+            </MagneticButton>
+          </motion.div>
+        </div>
+
+        {/* Right Column: Terminal */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.2 }}
-          className="font-mono text-accent mb-4 text-sm md:text-base flex items-center gap-2"
+          className="w-full lg:w-[45%] flex justify-center lg:justify-end"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.8, duration: 0.8, ease: customEase }}
         >
-          <span>&gt;</span>
-          <span className="w-2 h-4 bg-accent animate-pulse block"></span>
+          <Terminal className="bg-surface/80 border-border backdrop-blur-sm w-full shadow-2xl">
+            <TypingAnimation>&gt; python train_model.py --epochs 100</TypingAnimation>
+            <AnimatedSpan delay={1500} className="text-accent">
+              ✔ Loaded dataset: 50M records
+            </AnimatedSpan>
+            <AnimatedSpan delay={2000} className="text-accent">
+              ✔ Initialized neural network architecture
+            </AnimatedSpan>
+            <AnimatedSpan delay={2500} className="text-blue-400">
+              ℹ Training started on 4x A100 GPUs...
+            </AnimatedSpan>
+            <TypingAnimation delay={3000}>
+              &gt; Epoch 1/100: loss=2.431 accuracy=0.45
+            </TypingAnimation>
+            <AnimatedSpan delay={4500} className="text-green-400 font-bold">
+              ✨ Model converged successfully. Deploying to production!
+            </AnimatedSpan>
+          </Terminal>
         </motion.div>
 
-        <motion.h1 
-          className="text-display font-display font-bold tracking-tighter mb-4 text-text-primary flex"
-          variants={nameContainer}
-          initial="hidden"
-          animate="visible"
-        >
-          {nameChars.map((char, index) => (
-            <motion.span key={index} variants={nameCharVariant}>
-              {char === ' ' ? '\u00A0' : char}
-            </motion.span>
-          ))}
-        </motion.h1>
-
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.8, ease: customEase }}
-          className="text-lg md:text-xl text-text-secondary max-w-2xl mb-10 leading-relaxed font-sans"
-        >
-          <TypewriterText />
-          <br />
-          Transforming complex datasets into actionable intelligence. Building scalable machine learning systems and driving data-informed decisions for modern enterprises.
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.8, ease: customEase }}
-          className="flex flex-wrap items-center gap-4"
-        >
-          <MagneticButton>
-            <a href="#projects" className="inline-block bg-text-primary text-bg px-8 py-3 rounded-[12px] font-medium transition-colors hover:bg-accent hover:text-bg">
-              View Work
-            </a>
-          </MagneticButton>
-          <MagneticButton>
-            <a href="#contact" className="inline-block px-8 py-3 rounded-[12px] font-medium border border-border text-text-primary transition-colors hover:border-accent hover:text-accent">
-              Let's Talk
-            </a>
-          </MagneticButton>
-        </motion.div>
       </div>
 
       <motion.div

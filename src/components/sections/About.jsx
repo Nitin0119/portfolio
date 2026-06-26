@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { slideLeft, slideRight } from '@/lib/animations';
 
+import Lanyard from '../Lanyard/Lanyard';
+
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -28,16 +30,9 @@ export default function About() {
             animate={isInView ? "visible" : "hidden"}
           >
             {/* Avatar Card */}
-            <motion.div
-              whileHover={{ rotate: 3, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="w-full aspect-square bg-surface border border-border rounded-[12px] flex items-center justify-center relative overflow-hidden group cursor-default"
-            >
-              <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="text-8xl font-display font-bold text-text-primary opacity-50 group-hover:text-accent transition-colors">
-                NY
-              </span>
-            </motion.div>
+            <div className="w-full h-[400px] md:h-[400px] relative flex items-center justify-center -mt-10">
+              <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
+            </div>
 
             {/* Currently Badge */}
             <div className="flex items-center gap-4 p-5 border border-border rounded-[12px] bg-surface">

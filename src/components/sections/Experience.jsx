@@ -37,7 +37,7 @@ export default function Experience() {
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section id="experience" className="py-24 bg-bg relative">
+    <section id="experience" className="py-24 relative">
       <div className="container mx-auto px-6 max-w-1200">
 
         <div className="mb-16">

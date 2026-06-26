@@ -36,7 +36,7 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-24 bg-bg relative">
+    <section id="skills" className="py-24 relative">
       <div className="container mx-auto px-6 max-w-1200">
 
         <div className="mb-16">

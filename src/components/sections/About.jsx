@@ -9,7 +9,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-24 bg-bg relative overflow-hidden" ref={ref}>
+    <section id="about" className="py-24 relative overflow-hidden" ref={ref}>
       <div className="container mx-auto px-6 max-w-1200">
 
         <div className="mb-16">

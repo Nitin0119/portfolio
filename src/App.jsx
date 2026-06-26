@@ -9,13 +9,27 @@ import Projects from '@/components/sections/Projects';
 import Experience from '@/components/sections/Experience';
 import Education from '@/components/sections/Education';
 import Contact from '@/components/sections/Contact';
+import DotField from '@/components/DotField/DotField';
 
 function App() {
   return (
     <MotionConfig reducedMotion="user">
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <DotField
+          dotRadius={1.5}
+          dotSpacing={14}
+          bulgeStrength={67}
+          glowRadius={160}
+          sparkle={true}
+          waveAmplitude={0}
+          gradientFrom="rgba(198, 255, 52, 0.4)"
+          gradientTo="rgba(198, 255, 52, 0.1)"
+          glowColor="rgba(198, 255, 52, 0.2)"
+        />
+      </div>
       <CustomCursor />
       <Navbar />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <About />
         <Skills />

@@ -30,7 +30,7 @@ export default function Education() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="education" className="py-24 bg-surface relative border-t border-border">
+    <section id="education" className="py-24 relative border-t border-border">
       <div className="container mx-auto px-6 max-w-1200">
         
         <div className="mb-16">

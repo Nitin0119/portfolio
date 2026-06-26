@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { fadeUp, customEase } from '@/lib/animations';
 import MagneticButton from '@/components/shared/MagneticButton';
 import TypewriterText from '@/components/shared/TypewriterText';
-import ParticleBackground from '@/components/shared/ParticleBackground';
 
 export default function Hero() {
   const name = "Nitin Yadav";
@@ -30,9 +29,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-bg">
-      <ParticleBackground />
-
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
       <div className="container mx-auto px-6 relative z-10 max-w-1200">
         <motion.div 
           initial={{ opacity: 0 }}

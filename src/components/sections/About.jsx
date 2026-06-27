@@ -31,7 +31,7 @@ export default function About() {
           >
             {/* Avatar Card */}
             <div className="w-full h-[400px] md:h-[400px] relative flex items-center justify-center -mt-10">
-              <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
+              <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} frontImage="/avatar.png" backImage="/avatar.png" />
             </div>
 
             {/* Currently Badge */}

@@ -22,8 +22,8 @@ export default function Hero() {
 
   const nameCharVariant = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.5, ease: customEase }
     }
@@ -32,10 +32,10 @@ export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
       <div className="container mx-auto px-6 relative z-10 max-w-1200 flex flex-col lg:flex-row items-center justify-between gap-16">
-        
+
         {/* Left Column: Text Content */}
         <div className="w-full lg:w-[55%] flex flex-col items-start">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.2 }}
@@ -45,7 +45,7 @@ export default function Hero() {
             <span className="w-2 h-4 bg-accent animate-pulse block"></span>
           </motion.div>
 
-          <motion.h1 
+          <motion.h1
             className="text-display font-display font-bold tracking-tighter mb-4 text-text-primary flex flex-wrap"
             variants={nameContainer}
             initial="hidden"
@@ -89,7 +89,7 @@ export default function Hero() {
         </div>
 
         {/* Right Column: Terminal */}
-        <motion.div 
+        <motion.div
           className="w-full lg:w-[45%] flex justify-center lg:justify-end"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -124,7 +124,7 @@ export default function Hero() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span className="text-xs uppercase tracking-widest text-text-muted font-mono">Scroll</span>
-        <motion.div 
+        <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           className="w-[1px] h-12 bg-gradient-to-b from-accent to-transparent"

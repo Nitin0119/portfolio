@@ -2,10 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useCustomCursor } from '@/hooks/useCustomCursor';
 
+const findInteractiveState = (target) => {
+  let el = target;
+  while (el && el !== document) {
+    if (el.nodeType === 1) {
+      const cursorAttr = el.getAttribute('data-cursor');
+      if (cursorAttr === 'project' || cursorAttr === 'cta' || cursorAttr === 'interactive') {
+        return cursorAttr;
+      }
+      const tag = el.tagName?.toLowerCase();
+      if (['a', 'button', 'input', 'textarea', 'select', 'label'].includes(tag) || el.getAttribute('role') === 'button') {
+        return 'interactive';
+      }
+    }
+    el = el.parentElement || el.parentNode;
+  }
+  return 'default';
+};
+
 export default function CustomCursor() {
   const { cursorX, cursorY } = useCustomCursor();
   const [cursorState, setCursorState] = useState('default');
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const timeoutRef = React.useRef(null);
 
   useEffect(() => {
     const checkTouch = () => {
@@ -15,29 +34,35 @@ export default function CustomCursor() {
     checkTouch();
     window.addEventListener('resize', checkTouch);
     
-    const handleMouseOver = (e) => {
-      const target = e.target;
-      
-      const projectCard = target.closest('[data-cursor="project"]');
-      const ctaButton = target.closest('[data-cursor="cta"]');
-      const interactive = target.closest('a, button, input, textarea, [data-cursor="interactive"]');
+    const handlePointerMove = (e) => {
+      let target = e.target;
+      if (!target || target === window || target === document) {
+        target = document.elementFromPoint(e.clientX, e.clientY);
+      }
+      const nextState = findInteractiveState(target);
 
-      if (projectCard) {
-        setCursorState('project');
-      } else if (ctaButton) {
-        setCursorState('cta');
-      } else if (interactive) {
-        setCursorState('interactive');
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+
+      if (nextState === 'default') {
+        timeoutRef.current = setTimeout(() => {
+          setCursorState((prev) => prev !== 'default' ? 'default' : prev);
+        }, 40);
       } else {
-        setCursorState('default');
+        setCursorState((prev) => prev !== nextState ? nextState : prev);
       }
     };
 
-    window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener('mouseover', handlePointerMove, { passive: true });
+    window.addEventListener('mousemove', handlePointerMove, { passive: true });
     
     return () => {
       window.removeEventListener('resize', checkTouch);
-      window.removeEventListener('mouseover', handleMouseOver);
+      window.removeEventListener('mouseover', handlePointerMove);
+      window.removeEventListener('mousemove', handlePointerMove);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
 
@@ -50,13 +75,19 @@ export default function CustomCursor() {
       backgroundColor: "var(--color-accent)",
       border: "0px solid var(--color-accent)",
       opacity: 1,
+      transition: { duration: 0.15, ease: "easeOut" }
     },
     interactive: {
-      width: 40,
-      height: 40,
-      backgroundColor: "transparent",
+      width: 44,
+      height: 44,
+      backgroundColor: "rgba(198, 255, 52, 0)",
       border: "2px solid var(--color-accent)",
       opacity: 1,
+      transition: {
+        duration: 0.12,
+        ease: "easeOut",
+        backgroundColor: { duration: 0 }
+      }
     },
     project: {
       width: 80,
@@ -64,13 +95,15 @@ export default function CustomCursor() {
       backgroundColor: "var(--color-accent)",
       border: "0px solid var(--color-accent)",
       opacity: 1,
+      transition: { duration: 0.15, ease: "easeOut" }
     },
     cta: {
       width: 16,
       height: 16,
-      backgroundColor: "transparent",
+      backgroundColor: "rgba(198, 255, 52, 0)",
       border: "0px solid var(--color-accent)",
       opacity: 0,
+      transition: { duration: 0.15 }
     }
   };
 
@@ -85,7 +118,6 @@ export default function CustomCursor() {
       }}
       animate={cursorState}
       variants={variants}
-      transition={{ duration: 0.15, ease: "linear" }}
     >
       {cursorState === 'project' && (
         <motion.span 

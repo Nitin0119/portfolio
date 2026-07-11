@@ -125,15 +125,15 @@ export default function Contact() {
           </form>
 
           {/* Social Links */}
-          <div className="mt-16 flex justify-center items-center gap-8">
-            <a href="#" className="text-text-muted hover:text-accent transition-all hover:-translate-y-[2px]" aria-label="GitHub">
-              <Github size={24} />
+          <div className="mt-16 flex justify-center items-center gap-6">
+            <a href="#" data-cursor="interactive" className="p-3 inline-flex items-center justify-center text-text-muted hover:text-accent transition-all hover:-translate-y-[2px]" aria-label="GitHub">
+              <Github size={24} className="pointer-events-none" />
             </a>
-            <a href="#" className="text-text-muted hover:text-accent transition-all hover:-translate-y-[2px]" aria-label="LinkedIn">
-              <Linkedin size={24} />
+            <a href="#" data-cursor="interactive" className="p-3 inline-flex items-center justify-center text-text-muted hover:text-accent transition-all hover:-translate-y-[2px]" aria-label="LinkedIn">
+              <Linkedin size={24} className="pointer-events-none" />
             </a>
-            <a href="/resume.pdf" className="text-text-muted hover:text-accent transition-all hover:-translate-y-[2px]" aria-label="Resume">
-              <FileText size={24} />
+            <a href="/resume.pdf" data-cursor="interactive" className="p-3 inline-flex items-center justify-center text-text-muted hover:text-accent transition-all hover:-translate-y-[2px]" aria-label="Resume">
+              <FileText size={24} className="pointer-events-none" />
             </a>
           </div>
         </motion.div>

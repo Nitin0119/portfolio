@@ -1,34 +1,11 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { fadeUp, customEase } from '@/lib/animations';
+import { customEase } from '@/lib/animations';
 import MagneticButton from '@/components/shared/MagneticButton';
 import TypewriterText from '@/components/shared/TypewriterText';
 import { Terminal, TypingAnimation, AnimatedSpan } from "@/components/ui/terminal";
+import TextPressure from '@/components/TextPressure';
 
 export default function Hero() {
-  const name = "Nitin Yadav";
-  const nameChars = name.split('');
-
-  const nameContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.8,
-        staggerChildren: 0.04,
-      }
-    }
-  };
-
-  const nameCharVariant = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: customEase }
-    }
-  };
-
   return (
     <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
       <div className="container mx-auto px-6 relative z-10 max-w-1200 flex flex-col lg:flex-row items-center justify-between gap-16">
@@ -45,18 +22,26 @@ export default function Hero() {
             <span className="w-2 h-4 bg-accent animate-pulse block"></span>
           </motion.div>
 
-          <motion.h1
-            className="text-display font-display font-bold tracking-tighter mb-4 text-text-primary flex flex-wrap"
-            variants={nameContainer}
-            initial="hidden"
-            animate="visible"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8, ease: customEase }}
+            className="w-full mb-6 relative cursor-pointer"
           >
-            {nameChars.map((char, index) => (
-              <motion.span key={index} variants={nameCharVariant}>
-                {char === ' ' ? '\u00A0' : char}
-              </motion.span>
-            ))}
-          </motion.h1>
+            <TextPressure
+              text="Nitin Yadav"
+              flex={false}
+              alpha={false}
+              stroke={false}
+              width={true}
+              weight={true}
+              italic={true}
+              textColor="#E5E5E5"
+              minFontSize={64}
+              textAlign="left"
+              uppercase={false}
+            />
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 32 }}

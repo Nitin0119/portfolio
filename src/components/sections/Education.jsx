@@ -6,23 +6,23 @@ import CertBadge from '@/components/shared/CertBadge';
 const education = [
   {
     degree: "M.S. in Computer Science",
-    school: "Stanford University",
-    date: "2018 — 2020",
-    details: "Specialization in Artificial Intelligence. Research focus on distributed representation learning."
+    school: "Kurukshetra University",
+    date: "2022 — 2024",
+    details: "Specialization in Cloud Computing and AI. Research focus on distributed representation learning."
   },
   {
-    degree: "B.S. in Statistics",
-    school: "University of California, Berkeley",
-    date: "2014 — 2018",
-    details: "Minor in Computer Science. Graduated with Honors."
+    degree: "B.S. in Computer Science",
+    school: "Delhi University",
+    date: "2019 — 2022",
+    details: "Major in Computer Science."
   }
 ];
 
 const certifications = [
-  { name: "AWS Certified Machine Learning – Specialty", issuer: "Amazon Web Services", year: "2023" },
-  { name: "TensorFlow Developer Certificate", issuer: "Google", year: "2022" },
-  { name: "Data Engineering Professional", issuer: "Google Cloud", year: "2021" },
-  { name: "Deep Learning Specialization", issuer: "deeplearning.ai", year: "2020" }
+  { name: "Associate Data Analyst", issuer: "DataCamp", year: "2025" },
+  { name: "Associate Data Scientist", issuer: "DataCamp", year: "2025" },
+  { name: "SQL Associate", issuer: "DataCamp", year: "2025" },
+  { name: "SQL Basic", issuer: "HackerRank", year: "2024" }
 ];
 
 export default function Education() {
@@ -32,7 +32,7 @@ export default function Education() {
   return (
     <section id="education" className="py-24 relative border-t border-border">
       <div className="container mx-auto px-6 max-w-1200">
-        
+
         <div className="mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-text-primary mb-6 flex items-center gap-4">
             <span className="text-accent font-mono text-xl md:text-2xl font-normal">05.</span>

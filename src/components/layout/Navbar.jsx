@@ -25,6 +25,15 @@ export default function Navbar() {
     { name: 'Education', id: 'education' },
   ];
 
+  const handleSmoothScroll = (e, id) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const menuVariants = {
     hidden: { opacity: 0, y: "-100%" },
     visible: { 
@@ -60,7 +69,11 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 max-w-1200 flex justify-between items-center">
         {/* Logo */}
-        <a href="#hero" className="font-mono font-bold text-text-primary text-xl flex items-center before:content-[''] before:inline-block before:w-3 before:h-5 before:bg-accent before:animate-pulse before:mr-2 before:align-middle">
+        <a 
+          href="#hero" 
+          onClick={(e) => handleSmoothScroll(e, 'hero')}
+          className="font-mono font-bold text-text-primary text-xl flex items-center before:content-[''] before:inline-block before:w-3 before:h-5 before:bg-accent before:animate-pulse before:mr-2 before:align-middle"
+        >
           NITIN.DEV
         </a>
 
@@ -71,6 +84,7 @@ export default function Navbar() {
               <li key={link.id}>
                 <a 
                   href={`#${link.id}`}
+                  onClick={(e) => handleSmoothScroll(e, link.id)}
                   className={`text-sm font-medium transition-colors hover:text-accent relative ${
                     activeSection === link.id ? 'text-accent' : 'text-text-secondary'
                   }`}
@@ -88,6 +102,7 @@ export default function Navbar() {
           </ul>
           <a 
             href="#contact" 
+            onClick={(e) => handleSmoothScroll(e, 'contact')}
             className="px-5 py-2 border border-accent text-accent text-sm font-medium rounded-[6px] hover:bg-accent hover:text-bg transition-colors"
           >
             [ Hire Me ]
@@ -118,7 +133,7 @@ export default function Navbar() {
                 <motion.li key={link.id} variants={linkVariants}>
                   <a 
                     href={`#${link.id}`} 
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={(e) => handleSmoothScroll(e, link.id)}
                     className="hover:text-accent transition-colors"
                   >
                     {link.name}
@@ -128,7 +143,7 @@ export default function Navbar() {
               <motion.li variants={linkVariants}>
                 <a 
                   href="#contact" 
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => handleSmoothScroll(e, 'contact')}
                   className="px-6 py-3 border border-accent text-accent rounded-[6px] hover:bg-accent hover:text-bg transition-colors"
                 >
                   [ Hire Me ]

@@ -45,7 +45,8 @@ const TextPressure = ({
 
   minFontSize = 24,
   textAlign = 'left',
-  uppercase = false
+  uppercase = false,
+  lineHeight: customLineHeight = 1
 }) => {
   const containerRef = useRef(null);
   const titleRef = useRef(null);
@@ -56,7 +57,7 @@ const TextPressure = ({
 
   const [fontSize, setFontSize] = useState(minFontSize);
   const [scaleY, setScaleY] = useState(1);
-  const [lineHeight, setLineHeight] = useState(1);
+  const [lineHeight, setLineHeight] = useState(customLineHeight);
 
   const chars = text.split('');
 
@@ -98,7 +99,7 @@ const TextPressure = ({
 
     setFontSize(newFontSize);
     setScaleY(1);
-    setLineHeight(1);
+    setLineHeight(customLineHeight);
 
     requestAnimationFrame(() => {
       if (!titleRef.current) return;
